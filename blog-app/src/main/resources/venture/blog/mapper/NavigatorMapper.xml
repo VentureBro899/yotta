@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="venture.blog.mapper.NavigatorMapper">
+    <resultMap id="navigatormap" type="venture.blog.pojo.Navigator">
+        <id column="id" property="id"></id>
+        <result column="title" property="title"></result>
+        <result column="pid" property="pid"></result>
+        <result column="route" property="route"></result>
+        <result column="cid" property="cid"></result>
+        <result column="icon" property="icon"></result>
+        <collection column="id" property="children" ofType="venture.blog.pojo.Navigator" javaType="ArrayList" select="findChildren">
+
+        </collection>
+    </resultMap>
+    <select id="findAll" resultMap="navigatormap">
+        select * from blog_navigator
+        <where>
+            pid=0
+        </where>
+    </select>
+    <select id="find" resultType="venture.blog.pojo.Navigator" parameterType="int">
+        select * from blog_navigator where id=#{id}
+    </select>
+    <insert id="insert" parameterType="venture.blog.pojo.Navigator">
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into blog_navigator(title,pid,route,cid,icon) values(#{title},#{pid},#{route},#{cid},#{icon});
+    </insert>
+    <delete id="del" parameterType="int">
+        delete from blog_navigator where id=#{id}
+    </delete>
+    <update id="update" parameterType="venture.blog.pojo.Navigator">
+        update blog_navigator set title=#{title},pid=#{pid},route=#{route},cid=#{cid},icon=#{icon} where id=#{id}
+    </update>
+    <select id="findChildren" resultMap="navigatormap" parameterType="int">
+        select * from blog_navigator where pid = #{pid}
+    </select>
+    <select id="selectIsExist" resultType="Boolean" parameterType="int">
+        select count(*) from blog_navigator where pid=#{id} limit 1
+    </select>
+
+</mapper>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="venture.blog.mapper.SliderMapper">
+    <select id="findAll" resultType="slider" parameterType="String">
+        select * from blog_slider
+        <where>
+            <if test="key!=null">
+                title like concat('%',#{key},'%')
+            </if>
+        </where>
+    </select>
+    <select id="findShowing" resultType="slider">
+        select *
+        from blog_slider
+        where showing = true
+        order by reorder desc
+    </select>
+    <select id="find" resultType="slider" parameterType="int">
+        select *
+        from blog_slider
+        where id = #{id}
+    </select>
+    <insert id="insert" parameterType="slider">
+        insert into blog_slider(title, showing, picture, bgcolor, reorder, route, postdate)
+        values (#{title}, #{showing}, #{picture}, #{bgcolor}, #{reorder}, #{route}, #{postdate});
+    </insert>
+    <delete id="del" parameterType="int">
+        delete
+        from blog_slider
+        where id = #{id}
+    </delete>
+    <update id="update" parameterType="slider">
+        update blog_slider
+        set title=#{title},
+            showing=#{showing},
+            picture=#{picture},
+            bgcolor=#{bgcolor},
+            reorder=#{reorder},
+            route=#{route},
+            postdate=#{postdate}
+        where id = #{id}
+    </update>
+
+</mapper>

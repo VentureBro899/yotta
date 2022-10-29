@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <typeAliases>
+        <!--为pojo包下的所有Bean设置别名，别名指定为类名的首字母小写形式-->
+        <package name="venture.blog.pojo"></package>
+    </typeAliases>
+
+    <plugins>
+        <!-- 注意：分页助手的插件 配置在environment之前-->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!-- 指定方言，因为不同的数据库的分页实现语句是不同的，如mysql用limit
+            我只用了mysql环境，所以方言只配了mysql-->
+            <property name="helperDialect" value="mysql"/>
+        </plugin>
+    </plugins>
+
+</configuration>

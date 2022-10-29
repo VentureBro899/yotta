@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="venture.blog.mapper.ArticleMapper">
+    <resultMap id="article" type="venture.blog.pojo.Article">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="cid" property="cid"/>
+        <result column="coverpicture" property="coverpicture"/>
+        <result column="viewsum" property="viewsum"/>
+        <result column="thumbsum" property="thumbsum"/>
+        <result column="postdate" property="postdate"/>
+        <result column="description" property="description"/>
+        <association property="cname" column="cid" select="venture.blog.mapper.CategoryMapper.findCname"
+                     javaType="String"></association>
+    </resultMap>
+    <select id="findAll" resultMap="article" parameterType="String">
+        select id,title,cid,coverpicture,description,viewsum,thumbsum,postdate from blog_article
+        <where>
+            <if test="key!=null">
+                title like concat('%',#{key},'%')
+            </if>
+        </where>
+        order by id desc
+    </select>
+
+    <select id="find" resultMap="article" parameterType="int">
+        select *
+        from blog_article
+        where id = #{id}
+    </select>
+    <select id="findByCate" resultMap="article" parameterType="int">
+        select id,title,cid,coverpicture,description,viewsum,thumbsum,postdate
+        from blog_article
+        where cid = #{cid} order by id desc
+    </select>
+    <select id="findRecommendList" resultType="venture.blog.dto.RecommendArticle">
+        select id,title,coverpicture from blog_article where recommend=true
+    </select>
+    <insert id="insert" parameterType="venture.blog.pojo.Article">
+        insert into blog_article(title, cid, style, coverpicture, description, maincontent, hidden,recommend, postdate, viewsum,
+                                 thumbsum)
+        values (#{title}, #{cid}, #{style}, #{coverpicture}, #{description}, #{maincontent}, #{hidden}, #{recommend},#{postdate},
+                #{viewsum}, #{thumbsum});
+    </insert>
+    <delete id="del" parameterType="int">
+        delete
+        from blog_article
+        where id = #{id}
+    </delete>
+    <update id="update" parameterType="venture.blog.pojo.Article">
+        update blog_article
+        set title=#{title},
+            cid=#{cid},
+            style=#{style},
+            coverpicture=#{coverpicture},
+            description=#{description},
+            maincontent=#{maincontent},
+            hidden=#{hidden},
+            recommend=#{recommend},
+            postdate=#{postdate},
+            viewsum=#{viewsum},
+            thumbsum=#{thumbsum},
+            modifydate=#{modifydate}
+        where id = #{id}
+    </update>
+    <select id="selectIsExist" resultType="Boolean" parameterType="int">
+        select count(*)
+        from blog_article
+        where cid = #{cid} limit 1
+    </select>
+    <!-- 统计点赞数  -->
+    <select id="selectThumbSum" resultType="int">
+        select sum(thumbsum)
+        from blog_article
+    </select>
+    <update id="addThumbSum" parameterType="int">
+        update blog_article set thumbsum=thumbsum+1 where id=#{id}
+    </update>
+    <update id="subThumbSum" parameterType="int">
+        update blog_article set thumbsum=thumbsum-1 where id=#{id}
+    </update>
+    <select id="selectCount" resultType="int">
+        select count(1) from blog_article
+    </select>
+    <select id="selectThumbCount" resultType="int">
+        select sum(thumbsum) from blog_article
+    </select>
+    <select id="selectViewCount" resultType="int">
+        select sum(viewsum) from blog_article
+    </select>
+    <select id="selectSomeDayCount" resultType="int" parameterType="String">
+        select count(1) from blog_article where postdate&gt;=#{nowdate} and postdate&lt;date_add(#{nowdate},interval 1 day)
+    </select>
+    <select id="selectHot" resultType="article">
+        select title,id from blog_article where hidden=false order by viewsum desc limit 10;
+    </select>
+</mapper>

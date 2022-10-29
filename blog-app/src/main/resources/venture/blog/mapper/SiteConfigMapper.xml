@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="venture.blog.mapper.SiteConfigMapper">
+    <select id="select" resultType="site">
+        select *
+        from blog_site_config
+    </select>
+    <update id="update" parameterType="site">
+        update blog_site_config
+        set site_title=#{site_title},
+            site_subtitle=#{site_subtitle},
+            site_keywords=#{site_keywords},
+            site_description=#{site_description},
+            site_logo=#{site_logo},
+            site_owner=#{site_owner},
+            site_owner_avatar=#{site_owner_avatar},
+            site_owner_motto=#{site_owner_motto}
+    </update>
+</mapper>

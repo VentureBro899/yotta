@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="venture.blog.mapper.CategoryMapper">
+    <select id="findAll" resultType="venture.blog.pojo.Category" parameterType="String">
+        select * from blog_category
+        <where>
+            <if test="key!=null">
+                name like concat('%',#{key},'%')
+            </if>
+        </where>
+    </select>
+    <select id="find" resultType="venture.blog.pojo.Category" parameterType="int">
+        select * from blog_category where id=#{id}
+    </select>
+    <select id="findCname" resultType="String" parameterType="int">
+        select name from blog_category where id=#{id}
+    </select>
+    <insert id="insert" parameterType="venture.blog.pojo.Category">
+        insert into blog_category(name,detail,style) values(#{name},#{detail},#{style});
+    </insert>
+    <delete id="del" parameterType="int">
+        delete from blog_category where id=#{id}
+    </delete>
+    <update id="update" parameterType="venture.blog.pojo.Category">
+        update blog_category set name=#{name},detail=#{detail},style=#{style} where id=#{id}
+    </update>
+
+
+</mapper>

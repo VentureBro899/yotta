@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>yotta-blog</title>
+  <link rel="stylesheet" href="./css/global.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="./css/zui.css" />
+  <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="./js/zui.min.js"></script>
+</head>
+
+<body>
+  <div class="yotta-venture">
+    <div class="yotta-header">
+      <div class="yotta-container animate__animated">
+        <div class="yotta-logo"></div>
+        <div class="yotta-mobile-maincontain">
+          <div class="topbg"></div>
+          <div class="ownerinfo">
+            <img src="/img/avatar.jpg" />
+            <div class="myinfo">
+              <h3>文丑</h3>
+              <small>nothing ventured,nothing gained</small>
+            </div>
+          </div>
+        </div>
+        <div class="yotta-nav-list">
+          <div class="yotta-nav-item dropdown dropdown-hover">
+            <div><i class="icon icon-file-archive"></i>技术探讨</div>
+            <ul class="dropdown-menu">
+              <li class="dropdown-submenu">
+                <a href="###"><i class="icon icon-file-archive"></i>打开</a>
+                <ul class="dropdown-menu">
+                  <li><a href="###">运行</a></li>
+                  <li><a href="###">在终端中打开</a></li>
+                  <li><a href="###">在编辑器中打开</a></li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <a href="###">一组操作</a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-submenu">
+                    <a href="###">修改</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="###">修改标题</a></li>
+                      <li><a href="###">更新内容</a></li>
+                      <li><a href="###">转移</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown-submenu">
+                    <a href="###">删除</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="###">移动到回收站</a></li>
+                      <li><a href="###">直接删除</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="###">撤销</a></li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <a href="###">另一组操作</a>
+                <ul class="dropdown-menu">
+                  <li><a href="###">评审</a></li>
+                  <li><a href="###">计划</a></li>
+                  <li><a href="###">关闭</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="yotta-search">
+          <div class="input-group">
+            <div class="input-control search-box search-box-circle has-icon-left has-icon-right search-example"
+              id="searchboxExample">
+              <input id="searchForDesktop" type="search" class="form-control search-input" placeholder="全站搜索" />
+              <label for="searchForDesktop" class="input-control-icon-left search-icon"><i
+                  class="icon icon-search"></i></label>
+            </div>
+            <span class="input-group-btn">
+              <button class="btn btn-primary" type="button" onclick="dsearch()">搜索</button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="mobile-nav">
+        <div class="sidermasker animate__animated"></div>
+        <i class="icon icon-server showSider"></i>
+        <i class="icon icon-search showSearch"></i>
+        <div class="searchframe animate__animated">
+          <input id="searchForMobile" type="search" class="form-control search-input" placeholder="全站搜索" />
+          <div class="onsearch" onclick="msearch()"><i class="icon icon-search"></i></div>
+        </div>
+      </div>
+    </div>
+    <div class="yotta-main">
+      <div class="yotta-main-left" style="background: none">
+        <div class="cate-article-list">
+          <div class="cate-article-item">
+            <div class="article-img">
+              <img src="http://openzui.com/docs/img/img1.jpg" />
+            </div>
+            <div class="article-text">
+              <a href="http://www.baidu.com">
+                <h2>springmvc解决跨域的三种方式</h2>
+              </a>
+              <div class="prop-list">
+                <span><i class="icon icon-beaker"></i>2022-09-06</span>
+                <span><i class="icon icon-eye-open"></i>2022</span>
+                <span><i class="icon icon-thumbs-o-up"></i>2303</span>
+                <span><i class="icon icon-comment-alt"></i>453</span>
+              </div>
+              <div class="abstract">
+                目前前后端分离开发已成为主流，只需开发一套后端，可以给多套前端程序进行调用。安卓、小程序并不需要解决跨域问题，跨域是浏览器的同源策略，也就是说web端需要解决跨域问题。
+                目前前后端分离开发已成为主流，只需开发一套后端，可以给多套前端程序进行调用。安卓、小程序并不需要解决跨域问题，跨域是浏览器的同源策略，也就是说web端需要解决跨域问题。
+                目前前后端分离开发已成为主流，只需开发一套后端，可以给多套前端程序进行调用。安卓、小程序并不需要解决跨域问题，跨域是浏览器的同源策略，也就是说web端需要解决跨域问题。
+                目前前后端分离开发已成为主流，只需开发一套后端，可以给多套前端程序进行调用。安卓、小程序并不需要解决跨域问题，跨域是浏览器的同源策略，也就是说web端需要解决跨域问题。
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="pager pager-pills pager-loose">
+          <li class="previous"><a href="your/nice/url">«</a></li>
+          <li><a href="your/nice/url">1</a></li>
+          <li class="active"><a href="your/nice/url">2</a></li>
+          <li><a href="your/nice/url">3</a></li>
+          <li><a href="your/nice/url">4</a></li>
+          <li><a href="your/nice/url">5</a></li>
+          <li class="next"><a href="your/nice/url">»</a></li>
+        </ul>
+      </div>
+      <div class="yotta-main-right">
+        <div class="yotta-own-cart">
+          <div class="topbg"></div>
+          <div class="avatar"><img src="/img/avatar.jpg" /></div>
+          <div class="motto">
+            <a>文丑</a>
+            <em>你这么圣母，应该让乐山大佛的位置让给你坐</em>
+          </div>
+          <div class="info">
+            <div class="statistic">
+              <span class="sum">20</span><span class="prop">点赞数</span>
+            </div>
+            <div class="statistic">
+              <span class="sum">20</span><span class="prop">点赞数</span>
+            </div>
+            <div class="statistic">
+              <span class="sum">20</span><span class="prop">点赞数</span>
+            </div>
+          </div>
+        </div>
+        <div class="yotta-hot">
+          <div class="title"><i class="icon icon-star"></i>最热文章</div>
+          <div class="hot-list">
+            <div class="hot-item">最近很火的一件事你们</div>
+            <div class="hot-item">正火辣兄弟们</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="yotta-footer">
+      <div class="systeminfo">
+        name of the system is yotta. powered by venture
+      </div>
+    </div>
+  </div>
+  <script src="./js/mutual.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,840 @@
+/*
+* 代码描述:yotta blog system 布局
+* 作者:Venture
+* 创建时间:2022/09/03 09:43:01
+*/
+
+:root {
+  --globalColor: #0092ff;
+  --text-color: #353535;
+  --nav-height: 60px;
+  --mobile-nav-height: 40px;
+  --border-color: #ebeef5;
+  --out-border-radius: 15px;
+  --channle-bg: #fff;
+  --c: #ff6b81;
+}
+i {
+  margin-right: 5px;
+}
+body {
+  margin: 0;
+  background: #f7f8fa !important;
+}
+
+.yotta-venture {
+  /*   display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  flex: 1; */
+}
+
+.yotta-header {
+  justify-content: center;
+  .yotta-container {
+    margin: 0 auto;
+    max-width: 1140px;
+    height: var(--nav-height);
+    display: flex;
+    .yotta-logo {
+      width: 15%;
+    }
+    .yotta-nav-list {
+      width: 65%;
+
+      display: flex;
+      .yotta-nav-item {
+        font-size: 16px;
+        position: relative;
+        padding: 10px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        .dropdown-menu {
+          min-width: auto;
+          a {
+            min-width: auto;
+          }
+        }
+        i {
+          margin: 0 5px;
+        }
+      }
+
+      .active::after {
+        position: absolute;
+        bottom: 0px;
+        content: ' ';
+        width: 100%;
+        height: 3px;
+        animation: aftermove 0.5s infinite;
+        animation-iteration-count: 1;
+        background: var(--globalColor);
+      }
+      @keyframes aftermove {
+        from {
+          width: 10%;
+        }
+      }
+    }
+    .yotta-search {
+      width: 20%;
+      display: flex;
+      padding-right: 20px;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      input {
+        background: #ebeef5;
+      }
+      input:focus {
+        background: #fff;
+      }
+    }
+  }
+  .mobile-nav {
+    display: none;
+    .sidermasker {
+      display: none;
+    }
+  }
+  box-shadow: 0 2px 10px 0 rgba(0 146 255 / 30%);
+  background-color: var(--channle-bg);
+}
+
+.yotta-main {
+  min-height: 100vh;
+  padding: 0px 20px;
+  max-width: 1140px;
+  margin: 10px auto;
+  display: flex;
+  .yotta-main-left {
+    padding: 10px 0;
+    width: 70%;
+    margin-right: 10px;
+    box-sizing: border-box;
+    background: var(--channle-bg);
+    #yotta-carousel {
+      border-radius: var(--out-border-radius);
+      overflow: hidden;
+      position: relative;
+      margin: 0 10px;
+      .carousel-caption {
+        padding-bottom: 0px;
+        h3 {
+          text-align: left;
+          margin-top: 10px;
+          padding-left: 20px;
+        }
+      }
+      img {
+        height: 350px;
+        width: 100%;
+      }
+    }
+    .module-title {
+      line-height: 40px;
+      padding-left: 20px;
+      color: var(--globalColor);
+      font-size: 16px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .yotta-recommend {
+      .yotta-recommended-list {
+        padding: 10px 5px;
+        display: flex;
+        justify-content: flex-start;
+        a {
+          display: block;
+          box-sizing: border-box;
+          width: 25%;
+          padding: 0 5px;
+          max-height: 150px;
+          filter: blur(1px);
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+    .yotta-article {
+      .yotta-article-list {
+        .yotta-article-item {
+          margin-top: 10px;
+          position: relative;
+          height: 150px;
+          padding-bottom: 10px;
+          border-bottom: 1px solid var(--border-color);
+          display: flex;
+          align-items: center;
+          .article-img {
+            padding-left: 10px;
+            width: 30%;
+            box-sizing: border-box;
+            position: relative;
+            height: 140px;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: fill;
+            }
+            .floatdate {
+              color: #fff;
+              position: absolute;
+              right: -140px;
+              top: 5px;
+              transition: right 0.2s;
+              background: var(--globalColor);
+              border-radius: 10px;
+              padding: 0px 5px;
+              z-index: 5;
+            }
+          }
+
+          &:hover .floatdate {
+            right: 10px;
+          }
+
+          &:hover h2::after {
+            display: flex;
+            align-items: center;
+            content: '';
+            position: absolute;
+            right: -2px;
+            top: 0px;
+            width: 2px;
+            height: 20px;
+            background: var(--globalColor);
+            animation: article-title 0.5s infinite;
+            animation-iteration-count: 1;
+          }
+
+          @keyframes article-title {
+            from {
+              height: 4px;
+            }
+          }
+          .article-text {
+            z-index: 5;
+            background: var(--channle-bg);
+            padding-left: 10px;
+            width: 70%;
+            box-sizing: border-box;
+            h2 {
+              margin: 0;
+              cursor: pointer;
+            }
+
+            h2:hover {
+              color: var(--globalColor);
+            }
+            .prop-list {
+              margin: 5px 0;
+              color: #7e7e83;
+              span {
+                margin-right: 5px;
+                display: inline-block;
+              }
+            }
+            .abstract {
+              font-size: 14px;
+              height: 85px;
+              overflow: hidden;
+              padding-right: 10px;
+              display: -webkit-box;
+              overflow: hidden;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 4;
+            }
+          }
+        }
+      }
+    }
+    .cate-article-list {
+      margin-top: -10px;
+      .cate-article-item {
+        overflow: hidden;
+        border-radius: var(--out-border-radius);
+        background: var(--channle-bg);
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        .article-img {
+          width: 30%;
+          box-sizing: border-box;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        a {
+          display: block;
+          color: var(--text-color);
+        }
+        .article-text {
+          height: 200px;
+          width: 70%;
+          padding: 10px;
+          padding-top: 5px;
+          box-sizing: border-box;
+          h2 {
+            margin: 0;
+            padding-top: 5px;
+          }
+          .prop-list {
+            margin: 8px 0;
+            color: #7e7e83;
+            display: flex;
+            span {
+              margin-right: 5px;
+              display: flex;
+              align-items: center;
+            }
+          }
+          .abstract {
+            font-size: 14px;
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 6;
+          }
+        }
+      }
+    }
+    .yotta-article-detail {
+      min-height: 300px;
+      padding: 10px;
+      h1 {
+        margin-top: 10px;
+        text-align: center;
+      }
+      .attrlist {
+        border-bottom: 2px solid var(--border-color);
+        margin: 10px 0;
+        padding: 10px;
+        span {
+          margin-right: 10px;
+        }
+      }
+      .article-body .operation {
+        margin-top: 50px;
+        .likethis {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          .text-gray {
+            margin-top: -10px;
+          }
+
+          // 点赞动画
+          svg {
+            width: 60px;
+            /* 相对定位 */
+            position: relative;
+            /* z-index: 10; */
+          }
+
+          #heart {
+            /* 填充颜色 */
+            fill: #eee;
+            /* stroke属性可应用于任何种类的线条，文字和元素，就像一个圆的轮廓 */
+            stroke: var(--c);
+            /* 线条宽度 */
+            stroke-width: 40px;
+            /* 设置线条为虚线，虚线的长度 */
+            stroke-dasharray: 2600;
+            /* 线条的位移 */
+            stroke-dashoffset: 2600;
+            /* 端点为圆头 */
+            stroke-linecap: round;
+          }
+
+          span {
+            display: block;
+            width: 15px;
+            height: 15px;
+            background-color: transparent;
+            border-radius: 50%;
+            /* 绝对定位 居中 */
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            /* 设置各个方向的阴影 */
+            /* 通过var函数调用自定义属性--c,设置阴影颜色 */
+            box-shadow: 0 -160px 0 var(--c), 0 160px 0 var(--c),
+              -160px 0 0 var(--c), 160px 0 0 var(--c), -120px -120px 0 var(--c),
+              120px -120px 0 var(--c), 120px 120px 0 var(--c),
+              -120px 120px 0 var(--c);
+          }
+
+          /* 勾选复选框执行各个动画 */
+          .likeanimation:checked + svg #heart {
+            /* 执行动画: 动画名 时长 线性的 停留在最后一帧 */
+            animation: drawHeart 1s linear forwards;
+          }
+
+          .likeanimation:checked ~ span {
+            /* 执行动画: 动画名 时长 加速后减速 停留在最后一帧 */
+            animation: blink 0.5s ease-in-out forwards;
+            /* 动画延迟时间 */
+            animation-delay: 0.85s;
+          }
+
+          .likeanimation:checked + svg {
+            /* 执行动画: 动画名 时长 线性的 停留在最后一帧 */
+            animation: beat 1s linear forwards;
+          }
+
+          label {
+            /* 鼠标移入,光标变小手 */
+            cursor: pointer;
+          }
+
+          /* 定义动画 */
+          /* 画心的动画 */
+          @keyframes drawHeart {
+            0% {
+              stroke-dashoffset: 2600;
+            }
+
+            80% {
+              fill: #eee;
+              stroke-dashoffset: 0;
+            }
+
+            100% {
+              fill: var(--c);
+              stroke-dashoffset: 0;
+            }
+          }
+
+          /* 小圆点闪出的动画 */
+          @keyframes blink {
+            0% {
+              transform: translate(-50%, -50%) scale(0.5);
+              opacity: 0.8;
+            }
+
+            50% {
+              transform: translate(-50%, -50%) scale(1);
+              opacity: 1;
+            }
+
+            100% {
+              transform: translate(-50%, -50%) scale(1.1);
+              opacity: 0;
+              width: 0;
+              height: 0;
+            }
+          }
+
+          /* 心跳动的动画 */
+          @keyframes beat {
+            0% {
+              transform: scale(1);
+            }
+
+            70% {
+              transform: scale(1);
+            }
+
+            80% {
+              transform: scale(1.2);
+            }
+
+            100% {
+              transform: scale(1);
+            }
+          }
+        }
+      }
+    }
+  }
+  .yotta-main-right {
+    width: 30%;
+    box-sizing: border-box;
+    .yotta-own-cart {
+      position: sticky;
+      top: 20px;
+      overflow: hidden;
+      border-radius: var(--out-border-radius);
+      background: var(--channle-bg);
+      .topbg {
+        min-height: 150px;
+        background-image: url('/img/bartopbg.jpg');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        box-shadow: 0 15px 30px 0 #fff inset;
+      }
+      .avatar {
+        background: var(--channle-bg);
+        position: absolute;
+        top: 120px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 80px;
+        border-radius: 40px;
+        padding: 5px;
+        img {
+          border-radius: 40px;
+          height: 100%;
+          width: 100%;
+        }
+      }
+      .motto {
+        span {
+          font-size: 20px;
+          display: block;
+          text-shadow: 0px 2px 8px var(--globalColor);
+          color: var(--globalColor);
+        }
+        em {
+          margin: 10px auto;
+          display: block;
+        }
+        padding-top: 50px;
+        text-align: center;
+      }
+      .info {
+        display: flex;
+        justify-content: space-evenly;
+        margin: 10px;
+        .statistic {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          color: #666;
+          width: 33.33%;
+          .sum {
+            font-size: 16px;
+            font-weight: 600;
+          }
+          .prop {
+            font-size: 14px;
+          }
+        }
+        .statistic:nth-child(2) {
+          border-left: 1px solid var(--border-color);
+          border-right: 1px solid var(--border-color);
+          padding: 10px 20px;
+        }
+      }
+    }
+    .yotta-hot {
+      margin-top: 10px;
+      padding: 0;
+      background: var(--channle-bg);
+      border-radius: var(--out-border-radius);
+      .title {
+        display: flex;
+        align-items: center;
+        color: var(--globalColor);
+        border-bottom: 2px solid var(--border-color);
+        font-size: 16px;
+        padding: 8px 10px;
+      }
+      .hot-list {
+        padding: 5px 10px;
+        .hot-item {
+          cursor: pointer;
+          height: 30px;
+          padding: 10px;
+        }
+      }
+    }
+  }
+}
+
+.yotta-footer {
+  height: 60px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background: #fff;
+  text-align: center;
+}
+
+//宽度小于1200px
+@media screen and (max-width: 1200px) {
+  .yotta-header {
+    .yotta-container {
+      .yotta-logo {
+        display: none;
+        width: 0%;
+      }
+      .yotta-nav-list {
+        width: 85%;
+      }
+    }
+  }
+}
+
+//宽度大于996
+@media screen and (min-width: 996px) {
+  .yotta-header .yotta-container {
+    display: flex !important;
+  }
+  .yotta-main-left {
+    border-radius: var(--out-border-radius);
+  }
+  .carousel {
+    border-radius: 10px !important;
+    img {
+      height: 350px !important;
+    }
+  }
+  .yotta-mobile-maincontain {
+    display: none;
+  }
+}
+
+// 小屏幕 平板
+//宽度小于996px
+@media screen and (max-width: 996px) {
+  .yotta-header {
+    z-index: 20;
+    .yotta-container {
+      min-height: 100vh;
+      background: #ebeef5;
+      position: fixed;
+      width: 70%;
+      z-index: 99;
+      display: none;
+      --animate-duration: 0.5s;
+      .yotta-logo {
+        display: none;
+      }
+      .yotta-mobile-maincontain {
+        display: block;
+        .topbg {
+          min-height: 120px;
+          background-image: url('/img/bartopbg.jpg');
+          background-repeat: no-repeat;
+          background-size: 100%;
+        }
+        .ownerinfo {
+          margin: -20px auto;
+          border-radius: 10px;
+          background: #fff;
+          height: 60px;
+          width: 95%;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          padding-left: 10px;
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+          }
+          .myinfo {
+            padding-left: 10px;
+            h3 {
+              font-weight: 400;
+              margin: 5px 0;
+            }
+            small {
+              color: #7e7e83;
+            }
+          }
+        }
+      }
+      .yotta-nav-list {
+        background: #fff;
+        margin-top: 30px;
+        width: 100%;
+        flex-direction: column;
+        .active::after {
+          display: none;
+        }
+        .yotta-nav-item {
+          padding: 0;
+          margin: 10px 20px;
+          /**修改的样式**/
+          text-align: left;
+          flex-direction: column;
+          align-items: flex-start;
+          .dropdown-menu {
+            position: relative;
+            left: 10%;
+            margin-top: 5px;
+            background-clip: none;
+            border: 0;
+            border-radius: 0;
+            box-shadow: none;
+            border-left: 1px solid #ebeef5;
+            padding: 2px 5px;
+            width: 90%;
+          }
+
+          /**修改的样式结束**/
+        }
+      }
+      .yotta-search {
+        display: none;
+      }
+    }
+    height: var(--mobile-nav-height);
+    .mobile-nav {
+      .sidermasker {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        backdrop-filter: blur(3px);
+        z-index: 98;
+        background: rgb(0 0 0 / 40%);
+      }
+      .searchframe {
+        position: absolute;
+        top: var(--mobile-nav-height);
+        left: 0px;
+        padding: 10px 5%;
+        display: flex;
+        width: 100%;
+        background: #fff;
+        visibility: hidden;
+        z-index: 2;
+        input {
+          width: 85%;
+          border-radius: 0;
+          height: var(--mobile-nav-height);
+        }
+        .onsearch {
+          height: var(--mobile-nav-height);
+          width: 15%;
+          line-height: calc(var(--mobile-nav-height) + 2px);
+          text-align: center;
+          color: #fff;
+          background: var(--globalColor);
+          border: 1px solid #ebeef5;
+        }
+      }
+      display: flex;
+      justify-content: space-between;
+      height: var(--mobile-nav-height);
+      align-items: center;
+      padding: 0px 20px;
+      i {
+        font-size: 18px;
+      }
+    }
+  }
+  .yotta-main {
+    .yotta-main-left {
+      margin-right: 0;
+      width: 100%;
+      .yotta-article {
+        .yotta-article-list {
+          .yotta-article-item {
+            .article-img {
+              height: 120px;
+              width: 200px;
+              .floatdate {
+                display: none;
+              }
+            }
+            &:hover h2::after {
+              top: 8px;
+            }
+            .article-text {
+              .abstract {
+              }
+            }
+          }
+        }
+      }
+    }
+    .yotta-main-right {
+      overflow: hidden;
+      width: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .yotta-main {
+    padding: 0;
+    margin: 5px 0;
+    .yotta-main-left {
+      padding: 0px;
+      .yotta-recommend {
+        .yotta-recommended-list {
+          a {
+            width: 50%;
+            padding: 8px;
+          }
+        }
+      }
+      #yotta-carousel {
+        z-index: 1;
+        margin: 0;
+        border-radius: 0;
+        img {
+          height: 250px;
+        }
+      }
+      width: 100%;
+      .yotta-article {
+        .yotta-article-list {
+          .yotta-article-item {
+            .article-img {
+              height: 120px;
+              width: 140px;
+            }
+            .article-text {
+              h2 {
+                font-size: 15px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+              }
+              .prop-list span:first-child {
+                display: none;
+              }
+              .abstract {
+                font-size: 10px;
+                height: 70px;
+              }
+            }
+          }
+        }
+      }
+      .cate-article-list {
+        margin-top: 0;
+        .cate-article-item {
+          margin: 10px;
+          flex-direction: column;
+          .article-img {
+            width: 100%;
+            height: 200px;
+          }
+          .article-text {
+            width: 100%;
+            height: 200px;
+            padding: 10px;
+            h2 {
+              font-size: 16px;
+            }
+            .prop-list {
+              font-size: 10px;
+              white-space: nowrap;
+            }
+            .abstract {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
