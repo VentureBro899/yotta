@@ -141,6 +141,7 @@ export default {
           name: '',
           detail: ''
         }
+        this.fetchData()
         this.dialogFormVisible = false
       })
     },

@@ -59,7 +59,7 @@
                                 <span><i class="icon icon-beaker"></i>${article.postdate}</span>
                                 <span><i class="icon icon-eye-open"></i>${article.viewsum}</span>
                                 <span><i class="icon icon-thumbs-o-up"></i>${article.thumbsum}</span>
-                                <#-- <span><i class="icon icon-comment-alt"></i>200</span> -->
+                                <span><i class="icon icon-folder-close"></i>${article.cname!}</span>
                             </div>
                             <div class="abstract">
                                 ${article.description}

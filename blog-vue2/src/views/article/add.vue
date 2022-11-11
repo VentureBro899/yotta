@@ -197,10 +197,10 @@ export default {
       observable.subscribe({
         error(err) {
           console.log(err)
-          this.$message.danger('上传失败')
+          that.$message.danger('上传失败')
         },
         complete(res) {
-          that.$refs.md.$img2Url(pos, this.$store.getters.imgdomain + res.key)
+          that.$refs.md.$img2Url(pos, that.$store.getters.imgdomain + res.key)
         }
       })
     },
@@ -223,6 +223,7 @@ export default {
           view: 0,
           thumb: 0
         }
+        this.fileList = []
         this.$router.push('/article/list')
       })
     },

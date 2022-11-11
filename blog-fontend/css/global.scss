@@ -111,6 +111,7 @@ body {
   margin: 10px auto;
   display: flex;
   .yotta-main-left {
+    position: relative;
     padding: 10px 0;
     width: 70%;
     margin-right: 10px;
@@ -226,6 +227,9 @@ body {
             h2 {
               margin: 0;
               cursor: pointer;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
             }
 
             h2:hover {
@@ -320,6 +324,7 @@ body {
         }
       }
       .article-body .operation {
+        margin-bottom: 50px;
         margin-top: 50px;
         .likethis {
           position: relative;
@@ -454,14 +459,23 @@ body {
           }
         }
       }
+      .article-right {
+        font-size: 14px;
+        background-color: rgb(235, 238, 245);
+        padding: 8px;
+        border-left: 5px solid var(--globalColor);
+        position: absolute;
+        bottom: 20px;
+        left: 5px;
+        right: 5px;
+      }
     }
   }
   .yotta-main-right {
     width: 30%;
     box-sizing: border-box;
     .yotta-own-cart {
-      position: sticky;
-      top: 20px;
+      position: relative;
       overflow: hidden;
       border-radius: var(--out-border-radius);
       background: var(--channle-bg);
@@ -547,6 +561,49 @@ body {
           cursor: pointer;
           height: 30px;
           padding: 10px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+    .yotta-toc {
+      margin-top: 10px;
+      background-color: var(--channle-bg);
+      position: sticky;
+      top: 10px;
+      font-size: 14px;
+      ul:first {
+        padding: 10px 0;
+      }
+      a {
+        color: var(--text-color);
+      }
+      ul {
+        list-style: none;
+        padding-left: 10px;
+        li {
+          padding: 5px;
+          display: flex;
+          flex-direction: column;
+        }
+
+        li:hover a::after {
+          content: ' ';
+          height: 2px;
+          width: 100%;
+          background: var(--globalColor);
+          display: block;
+          animation: tocheader 0.5s infinite;
+          animation-iteration-count: 1;
+        }
+        @keyframes tocheader {
+          from {
+            width: 10%;
+          }
+          to {
+            width: 100%;
+          }
         }
       }
     }

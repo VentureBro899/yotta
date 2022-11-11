@@ -16,7 +16,7 @@
                 </div>
                 <div class="article-body">
                     <div id="yotta-markdown">
-              <textarea class="maincontent">${article.maincontent}</textarea>
+                         <textarea id="maincontent">${article.maincontent}</textarea>
                     </div>
                     <div class="operation">
                         <div class="likethis">
@@ -39,35 +39,37 @@
                         </div>
                     </div>
                 </div>
+                <div class="article-right">
+                    文章版权由博主所有，转载注明出处 https://www.996so.icu 分享技术，打击剽窃，我们一起努力
+                </div>
             </div>
         </div>
         <#include "sider.ftl">
     </div>
     <#include "footer.ftl">
 </div>
-<link rel="stylesheet" href="/plugins/editor.md/css/editormd.preview.css" />
-<script src="/plugins/editor.md/js/marked.min.js"></script>
-<script src="/plugins/editor.md/js/prettify.min.js"></script>
-
-<script src="/plugins/editor.md/js/raphael.min.js"></script>
-<script src="/plugins/editor.md/js/underscore.min.js"></script>
-<script src="/plugins/editor.md/js/sequence-diagram.min.js"></script>
-<script src="/plugins/editor.md/js/flowchart.min.js"></script>
-<script src="/plugins/editor.md/js/jquery.flowchart.min.js"></script>
-<script src="/plugins/editor.md/js/editormd.js"></script>
+<script src="/js/mutual.js"></script>
+<script src="/js/markdown-it.min.js"></script>
+<link rel="stylesheet" href="/css/mdbeautify.min.css">
+<script src="/js/highlight.min.js"></script>
+<script src="/js/markdown-it-toc.min.js"></script>
  <script type="text/javascript">
     let thumbsum =  $("#thumbsum").html()
 
-    // 解析md
-    editormd.markdownToHTML('yotta-markdown', {
-        htmlDecode: 'style,script,iframe', // you can filter tags decode
-        markdown: $('.maincontent').html().trim(),
-        emoji: true,
-        taskList: true,
-        tex: true, // 默认不解析
-        flowChart: true, // 默认不解析
-        sequenceDiagram: true // 默认不解析
-    })
+    var md = window.markdownit({
+        html:true,
+        breaks: true
+    });
+    var md = window.markdownit();
+    md = md.use(window.markdownitTOC);
+    var result = md.render('\n\n[TOC]\n\n' + $('#maincontent').text());
+    $('#yotta-markdown').html(result)
+    document.querySelectorAll('pre code').forEach(el => {
+        // then highlight each
+        hljs.highlightElement(el);
+    });
+
+    $(".table-of-contents:first").appendTo($(".yotta-toc"))
     $("#heart").on("click", function () {
         if (timeInterval > 0) {
             new $.zui.Messager('你的操作太频繁啦', {

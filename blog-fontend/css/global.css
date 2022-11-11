@@ -119,6 +119,7 @@ body {
   display: flex;
 }
 .yotta-main .yotta-main-left {
+  position: relative;
   padding: 10px 0;
   width: 70%;
   margin-right: 10px;
@@ -238,6 +239,9 @@ body {
 .yotta-main .yotta-main-left .yotta-article .yotta-article-list .yotta-article-item .article-text h2 {
   margin: 0;
   cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .yotta-main .yotta-main-left .yotta-article .yotta-article-list .yotta-article-item .article-text h2:hover {
   color: var(--globalColor);
@@ -328,6 +332,7 @@ body {
   margin-right: 10px;
 }
 .yotta-main .yotta-main-left .yotta-article-detail .article-body .operation {
+  margin-bottom: 50px;
   margin-top: 50px;
 }
 .yotta-main .yotta-main-left .yotta-article-detail .article-body .operation .likethis {
@@ -488,14 +493,22 @@ body {
     transform: scale(1);
   }
 }
+.yotta-main .yotta-main-left .yotta-article-detail .article-right {
+  font-size: 14px;
+  background-color: rgb(235, 238, 245);
+  padding: 8px;
+  border-left: 5px solid var(--globalColor);
+  position: absolute;
+  bottom: 20px;
+  left: 5px;
+  right: 5px;
+}
 .yotta-main .yotta-main-right {
   width: 30%;
   box-sizing: border-box;
 }
 .yotta-main .yotta-main-right .yotta-own-cart {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 20px;
+  position: relative;
   overflow: hidden;
   border-radius: var(--out-border-radius);
   background: var(--channle-bg);
@@ -583,6 +596,59 @@ body {
   cursor: pointer;
   height: 30px;
   padding: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.yotta-main .yotta-main-right .yotta-toc {
+  margin-top: 10px;
+  background-color: var(--channle-bg);
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10px;
+  font-size: 14px;
+}
+.yotta-main .yotta-main-right .yotta-toc ul:first {
+  padding: 10px 0;
+}
+.yotta-main .yotta-main-right .yotta-toc a {
+  color: var(--text-color);
+}
+.yotta-main .yotta-main-right .yotta-toc ul {
+  list-style: none;
+  padding-left: 10px;
+}
+.yotta-main .yotta-main-right .yotta-toc ul li {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.yotta-main .yotta-main-right .yotta-toc ul li:hover a::after {
+  content: " ";
+  height: 2px;
+  width: 100%;
+  background: var(--globalColor);
+  display: block;
+  -webkit-animation: tocheader 0.5s infinite;
+          animation: tocheader 0.5s infinite;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+}
+@-webkit-keyframes tocheader {
+  from {
+    width: 10%;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes tocheader {
+  from {
+    width: 10%;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 .yotta-footer {

@@ -1,4 +1,4 @@
-let timeInterval = 0
+
 
 $(function () {
   /* const nav = document.querySelectorAll(".yotta-nav-item")
